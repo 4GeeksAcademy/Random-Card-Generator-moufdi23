@@ -1,5 +1,207 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
-body{
-    background: white;
+body {
+  background: white;
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.card .card-body .row.mt-1 .col-2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: clamp(1rem, 3.2vw, 1.8rem);
+  line-height: 1;
+  padding-left: 0.5rem;
+  color: inherit;
+}
+
+.card .card-body .row.my-auto {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.card .card-body .row.my-auto .col-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: inherit;
+  word-break: break-word;
+}
+
+.card .card-body .row:last-child .col-2 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-size: clamp(1rem, 3.2vw, 1.8rem);
+  line-height: 1;
+  padding-right: 0.5rem;
+  color: inherit;
+  transform: rotate(180deg);
+  transform-origin: center;
+  transition: transform 160ms ease;
+}
+
+.card .card-body .row:last-child .col-2 * {
+  transform-origin: center;
+}
+@media (max-width: 360px) {
+  .card .card-body .row.my-auto .col-2 {
+    font-size: clamp(1.6rem, 12vw, 4rem);
+  }
+  .card .card-body .row.mt-1 .col-2,
+  .card .card-body .row:last-child .col-2 {
+    font-size: clamp(0.9rem, 4vw, 1.4rem);
+  }
+}
+
+body {
+  background: radial-gradient(
+    circle at 20% 10%,
+    #0b2a3a 0%,
+    #00121a 40%,
+    #000 100%
+  );
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.12;
+  pointer-events: none;
+  animation: starsShift 30s linear infinite;
+  mix-blend-mode: screen;
+}
+
+.card {
+  animation: floatY 6s ease-in-out infinite;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 8px 30px rgba(0, 150, 255, 0.06) inset,
+    0 0 40px rgba(0, 120, 255, 0.06);
+  transform-origin: center;
+  transition: box-shadow 200ms ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    0 0 60px rgba(0, 150, 255, 0.08);
+}
+
+@keyframes floatY {
+  0% {
+    transform: translateY(0) rotate(-0.6deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(0.6deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-0.6deg);
+  }
+}
+
+@keyframes starsShift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 2000px 1000px;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 2px 2px;
+  opacity: 0.08;
+  pointer-events: none;
+  animation: starsMove 60s linear infinite;
+  z-index: 0;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(#fff 1.6px, transparent 1.6px);
+  background-size: 6px 6px;
+  opacity: 0.06;
+  pointer-events: none;
+  animation: starsMove 120s linear infinite reverse;
+  z-index: 0;
+}
+.star-layer {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(#fff 2px, transparent 2px),
+    radial-gradient(#fff 1px, transparent 1px);
+  background-size:
+    40px 40px,
+    18px 18px;
+  opacity: 0.04;
+  pointer-events: none;
+  animation: starsTwinkle 8s ease-in-out infinite;
+  z-index: 0;
+}
+.credit-badge {
+  position: fixed;
+  right: 14px;
+  bottom: 12px;
+  z-index: 2;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.25);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+@keyframes starsMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 2000px 1000px;
+  }
+}
+@keyframes starsTwinkle {
+  0%,
+  100% {
+    opacity: 0.03;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.08;
+    transform: translateY(-6px);
+  }
 }
